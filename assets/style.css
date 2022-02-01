@@ -1,0 +1,24 @@
+img {
+    height: 75px;
+    width: 75px;
+}
+
+.subtitle {
+    display: none;  
+}
+
+.green {
+    background-color: green;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.orange {
+    background-color: orange;
+
+}
+.red {
+    background-color: red;
+}
