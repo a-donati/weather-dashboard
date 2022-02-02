@@ -32,7 +32,7 @@
                         <form id="city-search" class="card-body">
                             <label class="form-label" for="city"></label>
 
-                            <input name="city" id="city" type="text" autofocus="true" class="form-input" />
+                            <input name="city" id="city" type="text" autofocus="true" class="form-input" autocomplete="off" />
 
                             <button type="submit" class="btn btn-primary" id='search-button'>
                                 <span class="fas fa-search"></span>
@@ -43,22 +43,22 @@
                 <p class="append"></p>
 
                 <!-- display area for past city search -->
-                <div class="card subtitle">
+                <div class="card">
                     <div id="cities" class="card-body">
                         <ul id="list-group"></ul>
                     </div>
                 </div>
             </div>
             <!-- main container for current weather -->
-            <div class="col-md-9 subtitle">
+            <div class="col-md-9">
                 <div class="row border border-light shadow m-2 p-3 rounded">
-                    <h2 class="subtitle weather-title">Current Weather for: <span id="current-weather-city"></span></h2>
+                    <h2 class="weather-title d-none">Current Weather for: <span id="current-weather-city"></span></h2>
                     <div id="current-weather-container"></div>
 
                 </div>
                 <!-- 5 day forecast -->
-                <div class="card">
-                    <h2 class="subtitle weather-title">5-Day Forecast:</h2>
+                <div class="row m-1">
+                    <h2 class="d-none">5-Day Forecast:</h2>
                     <div id="five-day-forecast" class="row"></div>
                 </div>
             </div>
