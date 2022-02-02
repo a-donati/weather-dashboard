@@ -1,8 +1,6 @@
-//var currentWeather = document.querySelector('#current-weather');
 var currentWeather = $('#current-weather');
 var searchButton = document.querySelector('#search-button');
 var cityEntry = document.querySelector('#city');
-//var putCityNameHere = document.querySelector('#current-weather-city');
 var cityName = $('#current-weather-city');
 var displayCurrentWeather = $('#current-weather-container');
 var date = moment().format("l");
@@ -16,13 +14,13 @@ var lat;
 var lon;
 
 //empty current ul list
-function init () {
+function init() {
     cityHistory.empty();
     displaySearchHistory();
 }
 
 // display search history from local storage
-function displaySearchHistory () {
+function displaySearchHistory() {
     if (localStorage.getItem("cities") === null) {
         listOfCities = [];
     }
@@ -30,23 +28,23 @@ function displaySearchHistory () {
         listOfCities = JSON.parse(localStorage.getItem("cities"));
     }
     // create li for each city from ls array
-    for (var i=0; i<listOfCities.length; i++) {
+    for (var i = 0; i < listOfCities.length; i++) {
         var li = $('<li></li>');
         li.addClass('list-group-item');
-        li.css('cursor', 'pointer');  
+        li.css('cursor', 'pointer');
         li.text(listOfCities[i]);
         cityHistory.append(li);
     }
 
 
-var liList = $('li');
-// when clicking on items in the list, the innertext content (city) will be passed back into API to display weather search results
-for (var i = 0; i < liList.length; i++) {
-    liList[i].addEventListener('click', function (event) {
-        console.log(this.textContent);
-        getAPI(this.textContent);
-    })
-}
+    var liList = $('li');
+    // when clicking on items in the list, the innertext content (city) will be passed back into API to display weather search results
+    for (var i = 0; i < liList.length; i++) {
+        liList[i].addEventListener('click', function (event) {
+            console.log(this.textContent);
+            getAPI(this.textContent);
+        })
+    }
 };
 
 // collect user input value to pass to API
@@ -85,7 +83,7 @@ function getAPI(cityCurrent) {
         .then(function (response) {
             if (response.ok) {
                 console.log(response);
-                response.json().then(function(data) {
+                response.json().then(function (data) {
                     console.log(data);
                     displayWeather(data, cityCurrent);
                 });
@@ -95,7 +93,7 @@ function getAPI(cityCurrent) {
                 // location.reload();
             }
         })
-        .catch(function(error) {
+        .catch(function (error) {
             alert('unable to connect to open Weather');
             location.reload();
         });
@@ -117,18 +115,18 @@ var displayWeather = function (currentWeatherToDisplay, cityCurrentWeather) {
     }
 
     //puts new city into ls
-    
-        if (listOfCities.indexOf(currentWeatherToDisplay.name) === -1) {
-            listOfCities.push(currentWeatherToDisplay.name);
-            localStorage.setItem("cities", JSON.stringify(listOfCities));
-        }
-    
+
+    if (listOfCities.indexOf(currentWeatherToDisplay.name) === -1) {
+        listOfCities.push(currentWeatherToDisplay.name);
+        localStorage.setItem("cities", JSON.stringify(listOfCities));
+    }
+
     cityHistory.empty();
     // iterate through cities array from ls, creating list item for each
-    for (var i=0; i<listOfCities.length; i++) {
+    for (var i = 0; i < listOfCities.length; i++) {
         var li = $('<li>');
-        li.addClass('list-group-item'); 
-        li.css('cursor', 'pointer'); 
+        li.addClass('list-group-item');
+        li.css('cursor', 'pointer');
         li.text(listOfCities[i]);
         cityHistory.append(li);
     }
@@ -146,10 +144,10 @@ var displayWeather = function (currentWeatherToDisplay, cityCurrentWeather) {
     //remove previous values in current weather and 5 day forecast
     displayCurrentWeather.empty();
     fiveDayForecastContainer.empty();
-    
+
     //add city searched and current date to container display
     cityName.text(currentWeatherToDisplay.name + "  (" + date + ")");
-    
+
     //obtain current latitude and longitude from location searched 
     var lat = currentWeatherToDisplay.coord.lat;
     var lon = currentWeatherToDisplay.coord.lon;
@@ -176,11 +174,11 @@ var displayWeather = function (currentWeatherToDisplay, cityCurrentWeather) {
     var windSpeed = $('<p>');
     windSpeed.attr('class', 'wind-speed');
     windSpeed.text("WindSpeed: " + currentWeatherToDisplay.wind.speed + "mph, Direction: " +
-    currentWeatherToDisplay.wind.deg +
-    "°");
+        currentWeatherToDisplay.wind.deg +
+        "°");
     currentWeatherCard.append(windSpeed);
     // call getUV with our obtained latitude and longitude values
-    getUV (lat, lon);
+    getUV(lat, lon);
 }
 
 //get UV index from api
@@ -191,24 +189,24 @@ function getUV(lat, lon) {
         .then(function (response) {
             if (response.ok) {
                 console.log(response);
-                response.json().then(function(data) {
-                displayUV(data);
+                response.json().then(function (data) {
+                    displayUV(data);
                 });
             } else {
                 alert('Error:' + response.statusText);
             }
         })
-        .catch(function(error) {
+        .catch(function (error) {
             alert('unable to connect to open Weather');
         });
 }
 
 //display the UV index
-var displayUV = function (dataForUV) { 
+var displayUV = function (dataForUV) {
     var uvIndex = $('<p>');
     uvIndex.text("UV Index: ");
     currentWeatherCard.append(uvIndex);
-    
+
 
     var uvIndexValue = $('<span>')
 
@@ -234,7 +232,7 @@ var displayUV = function (dataForUV) {
 var displayFiveDay = function (fiveDayWeatherToDisplay) {
 
     //loop for each day of the five day forecast
-    for (var i=1; i<6; i++) {
+    for (var i = 1; i < 6; i++) {
 
         //create container for each day of the five day forecast
         var dayContainer = $('<div>');
@@ -242,22 +240,22 @@ var displayFiveDay = function (fiveDayWeatherToDisplay) {
         fiveDayForecastContainer.append(dayContainer);
 
         //function to convert unix date to human date
-        function timeConverter(UNIX_timestamp){
+        function timeConverter(UNIX_timestamp) {
             var a = new Date(UNIX_timestamp * 1000);
-            var months = ['1','2','3','4','5','6','7','8','9','10','11','12'];
+            var months = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
             var month = months[a.getMonth()];
             var date = a.getDate();
             var year = a.getFullYear();
             var time = month + '/' + date + '/' + year
             return time;
         }
-        
+
         //create element for date, get date from api, append to five day forecast container
         var eachDate = $('<h5>');
         eachDate.addClass('card-title');
         eachDate.text(timeConverter(fiveDayWeatherToDisplay.daily[i].dt));
         dayContainer.append(eachDate)
-        
+
         //create element for icon, get icon from api, append to five day forecast container
         var icon = $('<img>')
         icon.addClass('img');
