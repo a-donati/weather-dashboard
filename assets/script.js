@@ -141,6 +141,7 @@ var displayWeather = function (currentWeatherToDisplay, cityCurrentWeather) {
 
     //display titles for current weather and 5 day forecast
     $('h2').removeClass('d-none');
+    $('div').removeClass('d-none');
     //remove previous values in current weather and 5 day forecast
     displayCurrentWeather.empty();
     fiveDayForecastContainer.empty();
@@ -267,6 +268,12 @@ var displayFiveDay = function (fiveDayWeatherToDisplay) {
         fiveDayTemp.attr('class', 'temp');
         fiveDayTemp.text("Temp: " + Math.floor(fiveDayWeatherToDisplay.daily[i].temp.day) + "°F");
         dayContainer.append(fiveDayTemp);
+
+        // create element for wind, get windspeed from api, append to five day forecast container
+        var fiveDayWind = $('<p>');
+        fiveDayWind.attr('class', 'wind');
+        fiveDayWind.text("WindSpeed: " + Math.floor(fiveDayWeatherToDisplay.daily[i].wind_speed) + "mph");
+        dayContainer.append(fiveDayWind);
 
         //create element for humidity, get humidity from api, append to five day forecast container
         var humidity = $('<p>');
