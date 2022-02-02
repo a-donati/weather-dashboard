@@ -9,19 +9,37 @@ img {
 
 .green {
     background-color: green;
+    border-radius: 10px;
+    padding: 5px;
+    color: white;
 }
 
 .yellow {
     background-color: yellow;
+    border-radius: 10px;
+    padding: 5px;
+    color: white;
 }
 
 .orange {
     background-color: orange;
+    border-radius: 10px;
+    padding: 5px;
+    color: white;
 
 }
 .red {
     background-color: red;
+    border-radius: 10px;
+    padding: 5px;
+    color: white;
 
+}
+.purple {
+    background-color: purple;
+    border-radius: 10px;
+    padding: 5px;
+    color: white;
 }
 
 .el-5-day {
