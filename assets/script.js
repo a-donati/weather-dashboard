@@ -163,7 +163,7 @@ var displayWeather = function (currentWeatherToDisplay, cityCurrentWeather) {
     // create p tag to display temp data
     var temperature = $('<p>');
     temperature.attr('class', 'temp');
-    temperature.text("Temperature: " + currentWeatherToDisplay.main.temp + " °F");
+    temperature.text("Temperature: " + Math.floor(currentWeatherToDisplay.main.temp) + " °F");
     currentWeatherCard.append(temperature);
     // create p tag to display humidity data
     var humidity = $('<p>');
@@ -173,7 +173,7 @@ var displayWeather = function (currentWeatherToDisplay, cityCurrentWeather) {
     // create p tag to display windspeed and direction
     var windSpeed = $('<p>');
     windSpeed.attr('class', 'wind-speed');
-    windSpeed.text("WindSpeed: " + currentWeatherToDisplay.wind.speed + "mph, Direction: " +
+    windSpeed.text("WindSpeed: " + Math.floor(currentWeatherToDisplay.wind.speed) + "mph, Direction: " +
         currentWeatherToDisplay.wind.deg +
         "°");
     currentWeatherCard.append(windSpeed);
@@ -265,7 +265,7 @@ var displayFiveDay = function (fiveDayWeatherToDisplay) {
         //create element for temp, get temp from api, append to five day forecast container 
         var fiveDayTemp = $('<p>');
         fiveDayTemp.attr('class', 'temp');
-        fiveDayTemp.text("Temp: " + fiveDayWeatherToDisplay.daily[i].temp.day + " °F");
+        fiveDayTemp.text("Temp: " + Math.floor(fiveDayWeatherToDisplay.daily[i].temp.day) + "°F");
         dayContainer.append(fiveDayTemp);
 
         //create element for humidity, get humidity from api, append to five day forecast container
