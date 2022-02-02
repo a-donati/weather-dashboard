@@ -1,6 +1,15 @@
 # weather-dashboard
 
-This project is a simple weather dashboard made with HTML, CSS/Bootstrap, and jQuery. You are able to search for a location using the searchbar to the left of the page which will then display the current weather for the desired location along with the five day forecast. The values displayed are a location's temperature, humidity, wind speed and direction, and UV index. The location search history is saved in local storage and displayed below the search area.
+## Description
+
+This project is a simple weather dashboard made with HTML, CSS/Bootstrap, and jQuery. User is able to search for a location using the searchbar to the left of the page which will then display the current weather for the desired location along with the five day forecast. The values displayed are a location's temperature, humidity, wind speed and direction, and UV index. The location search history is saved in local storage and displayed below the search area. Weather data is obtained from OpenWeather API.
+
+## Features
+* Current weather conditions and five day forecast of user entered location
+* UV index, color coded based upon US EPA guidelines
+* User search history saved in localStorage
+* Clicking the button of a previously stored location will redisplay the weather conditions
+* Warning message alerts user if the location that they entered in the search field is inaccesible
 
 
 ## Installation
@@ -13,11 +22,12 @@ Clone the repository [here](https://github.com/a-donati/weather-dashboard/)
 
  ![Weather-dashboard includes a search bar, display for current date, weather, and a five day forecast section that is generated when a location is searched for.](https://user-images.githubusercontent.com/94128491/152244351-56adb1ca-afa5-4bd0-9e37-c0a2c57df145.png)
 
-  
 
-## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## References
+
+https://openweathermap.org/api
 
 
 ## License
